@@ -28,21 +28,24 @@ function secondOperand() {
 secondOperand();
 
 let calculation = `${firstValue} ${symbol} ${secondValue} = `;
+
 secondValue = +secondValue;
 firstValue = +firstValue;
-
-switch (symbol) {
-  case "/":
-    result = `${calculation}${firstValue / secondValue}`;
-    break;
-  case "*":
-    result = `${calculation}${firstValue * secondValue}`;
-    break;
-  case "+":
-    result = `${calculation}${firstValue + secondValue}`;
-    break;
-  case "-":
-    result = `${calculation}${firstValue - secondValue}`;
-    break;
+function count() {
+  switch (symbol) {
+    case "/":
+      result = `${calculation}${firstValue / secondValue}`;
+      break;
+    case "*":
+      result = `${calculation}${firstValue * secondValue}`;
+      break;
+    case "+":
+      result = `${calculation}${firstValue + secondValue}`;
+      break;
+    case "-":
+      result = `${calculation}${firstValue - secondValue}`;
+      break;
+  }
+  alert(result);
 }
-alert(result);
+count();
