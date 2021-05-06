@@ -1,9 +1,7 @@
 let symbol;
-let firstValue;
-let secondValue;
-function answer() {
+function getSymbol() {
   do {
-    symbol = prompt("Choose a Symbol (+ - / *)");
+    symbol = prompt("Choose a symbol (+ - / *)");
   } while (
     symbol !== "*" &&
     symbol !== "/" &&
@@ -11,26 +9,21 @@ function answer() {
     symbol !== "-"
   );
 }
-answer();
+getSymbol();
 
-function firstOperand() {
+function getOperand(string) {
+  let operand;
   do {
-    firstValue = prompt("What`s your first number?");
-  } while (isNaN(firstValue) || firstValue === "");
+    operand = prompt(string);
+  } while (isNaN(operand) || operand === "");
+  return +operand;
 }
-firstOperand();
 
-function secondOperand() {
-  do {
-    secondValue = prompt("What`s your second number?");
-  } while (isNaN(secondValue) || secondValue === "");
-}
-secondOperand();
+const firstValue = getOperand("What`s your first number?");
+const secondValue = getOperand("What`s your second number?");
 
 let calculation = `${firstValue} ${symbol} ${secondValue} = `;
 
-secondValue = +secondValue;
-firstValue = +firstValue;
 function count() {
   switch (symbol) {
     case "/":
