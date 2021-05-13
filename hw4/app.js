@@ -64,6 +64,5 @@ const value = getNumberOfOperands(
 );
 const operands = getOperands(value);
 const summary = getSum(operator);
-const calculation = alert(
-  `Your result : ${arrayOfOperands.join(operator)} = ${summary}`
-);
+
+alert(`Your result : ${arrayOfOperands.join(operator)} = ${summary}`);
