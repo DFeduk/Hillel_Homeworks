@@ -20,7 +20,6 @@ function getArrayOfOperands(string) {
 }
 
 function getSum(operator) {
-  arrayOfOperands.filter(Number);
   sum = arrayOfOperands[0];
   for (let i = 1; i < arrayOfOperands.length; i++) {
     switch (operator) {
