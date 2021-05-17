@@ -51,6 +51,6 @@ function getResult(operator) {
 
 const operator = getOperator();
 const arrayOfOperands = getArrayOfOperands("Write down your operands");
-const arrayOfNumbers = kek(arrayOfOperands);
+const arrayOfNumbers = getArrayOfNumbers(arrayOfOperands);
 let result = getResult(operator);
 alert(`Your result : ${arrayOfNumbers.join(operator)} = ${result}`);
