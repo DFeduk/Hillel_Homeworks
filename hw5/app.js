@@ -16,11 +16,11 @@ function getArrayOfOperands(string) {
     arr = prompt(string);
   } while (arr === null || arr === "");
   arr = arr.split(",");
-  return arr.map(Number).filter(Number);
+  return arr.map(Number).filter(Number.isFinite);
 }
 
-function getSum(operator) {
-  sum = arrayOfOperands[0];
+function getCalculation(operator, arrayOfOperands) {
+  let sum = arrayOfOperands[0];
   for (let i = 1; i < arrayOfOperands.length; i++) {
     switch (operator) {
       case "+":
@@ -42,5 +42,5 @@ function getSum(operator) {
 
 const operator = getOperator();
 let arrayOfOperands = getArrayOfOperands("Write down your operands");
-let result = getSum(operator);
+let result = getCalculation(operator, arrayOfOperands);
 alert(`Your result : ${arrayOfOperands.join(operator)} = ${result}`);
