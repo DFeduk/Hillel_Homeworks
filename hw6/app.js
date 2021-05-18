@@ -21,22 +21,29 @@ const students = [
   },
 ];
 
-const getAverageGroupMark = () => {
+let getAverageGroupMark = (students) => {
   let arrayOfMarks = [];
   for (let i = 0; i < students.length; i++) {
     let groupMarks = students[i].marks;
     arrayOfMarks = arrayOfMarks.concat(groupMarks);
   }
-  let sum = arrayOfMarks.reduce((a, b) => a + b);
-  let average = sum / arrayOfMarks.length;
+  let average = calculation(arrayOfMarks);
+  console.log(average);
   return average;
 };
 
-const getAverageStudentMark = (id) => {
-  let studentMarks = id.marks;
-  let sum = studentMarks.reduce((a, b) => a + b);
-  let average = sum / studentMarks.length;
+let getAverageStudentMark = (students) => {
+  let studentMarks = students.marks;
+  let average = calculation(studentMarks);
+  console.log(average);
   return average;
 };
-const avarageGroupMark = getAverageGroupMark();
-const averageStudentMark = getAverageStudentMark(students[1]);
+
+function calculation(array) {
+  let sum = array.reduce((a, b) => a + b);
+  let average = sum / array.length;
+  return average;
+}
+
+let avarageGroupMark = getAverageGroupMark(students);
+let averageStudentMark = getAverageStudentMark(students[2]);
