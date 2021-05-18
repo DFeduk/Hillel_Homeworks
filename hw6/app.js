@@ -38,5 +38,5 @@ const getAverageStudentMark = (id) => {
   let average = sum / studentMarks.length;
   return average;
 };
-const avarageGroupMark = averageGroupMark();
+const avarageGroupMark = getAverageGroupMark();
 const averageStudentMark = getAverageStudentMark(students[1]);
