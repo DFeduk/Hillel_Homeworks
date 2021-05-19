@@ -27,19 +27,19 @@ let getAverageGroupMark = (students) => {
     let groupMarks = students[i].marks;
     arrayOfMarks = arrayOfMarks.concat(groupMarks);
   }
-  let average = calculation(arrayOfMarks);
+  let average = getAverageMark(arrayOfMarks);
   console.log(average);
   return average;
 };
 
-let getAverageStudentMark = (students) => {
+let getAverageStudentMark = (student) => {
   let studentMarks = students.marks;
-  let average = calculation(studentMarks);
+  let average = getAverageMark(studentMarks);
   console.log(average);
   return average;
 };
 
-function calculation(array) {
+function getAverageMark(array) {
   let sum = array.reduce((a, b) => a + b);
   let average = sum / array.length;
   return average;
