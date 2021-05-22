@@ -25,24 +25,16 @@ function isOperandValid(num) {
 }
 
 function getCalculation(operator, arrayOfOperands) {
-  let value = arrayOfOperands[0];
-  for (let i = 1; i < arrayOfOperands.length; i++) {
-    switch (operator) {
-      case "+":
-        value = value + arrayOfOperands[i];
-        break;
-      case "-":
-        value = value - arrayOfOperands[i];
-        break;
-      case "*":
-        value = value * arrayOfOperands[i];
-        break;
-      case "/":
-        value = value / arrayOfOperands[i];
-        break;
-    }
+  switch (operator) {
+    case "+":
+      return arrayOfOperands.reduce((a, b) => a + b);
+    case "-":
+      return arrayOfOperands.reduce((a, b) => a - b);
+    case "*":
+      return arrayOfOperands.reduce((a, b) => a * b);
+    case "/":
+      return arrayOfOperands.reduce((a, b) => a / b);
   }
-  return value;
 }
 
 const operator = getOperator();
