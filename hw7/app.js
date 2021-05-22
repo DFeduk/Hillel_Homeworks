@@ -11,20 +11,20 @@ function isOperatorValid(symbol) {
 }
 
 function getArrayOfOperands(string) {
-  let arr = "";
+  let arr;
   do {
-    arr = prompt(string);
-  } while (arr === null || arr === "");
-  arr = arr.split(",");
-  return arr.map(Number).filter(
-    Number.isFinite &&
-      function (operand) {
-        return operand % 2 !== 0 ? true : false;
-      }
-  );
+    arr = prompt(string).split(",");
+  } while (!isOperandValid(arr));
+  return arr
+    .map(Number)
+    .filter((operand) => isFinite(operand) && operand % 2 !== 0);
 }
 
-function getSum(operator) {
+function isOperandValid(num) {
+  return num !== null && num !== "";
+}
+
+function getCalculation(operator, arrayOfOperands) {
   let value = arrayOfOperands[0];
   for (let i = 1; i < arrayOfOperands.length; i++) {
     switch (operator) {
@@ -46,6 +46,8 @@ function getSum(operator) {
 }
 
 const operator = getOperator();
-let arrayOfOperands = getArrayOfOperands("Write down your operands");
-let result = getSum(operator);
+const arrayOfOperands = getArrayOfOperands(
+  "Write down your operands(separate them by commas)"
+);
+const result = getCalculation(operator, arrayOfOperands);
 alert(`Your result : ${arrayOfOperands.join(operator)} = ${result}`);
