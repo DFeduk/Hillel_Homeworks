@@ -13,8 +13,9 @@ function isOperatorValid(symbol) {
 function getArrayOfOperands(string) {
   let arr;
   do {
-    arr = prompt(string).split(",");
+    arr = prompt(string);
   } while (!isOperandValid(arr));
+  arr = arr.split(",");
   return arr
     .map(Number)
     .filter((operand) => isFinite(operand) && operand % 2 !== 0);
