@@ -1,12 +1,12 @@
 const DELETE_BTN_CLASS = `remove-item`;
 const DELETE_BTN_ICON = '<i class="fa fa-remove"></i>';
 const TASKS_ELEMENT_CLASS = `collection-item`;
-const TASK_ID_ATTRIBUTE_NAME = "data-task-id";
+const TASK_ID_ATTRIBUTE_NAME = `data-task-id`;
 
 const taskCollection = document.querySelector(`.collection`);
 const taskInput = document.querySelector(`#task`);
 const applyBtn = document.querySelector(`.btn`);
-const taskTemplate = document.getElementById("newTaskTemplate").innerHTML;
+const taskTemplate = document.querySelector(`#newTaskTemplate`).innerHTML;
 
 let tasksList = [];
 
@@ -72,12 +72,12 @@ function renderTasks(list) {
 }
 function renderTask(task) {
   const newTaskHtml = getTaskHtml(task);
-  taskCollection.insertAdjacentHTML("beforeend", newTaskHtml);
+  taskCollection.insertAdjacentHTML(`beforeend`, newTaskHtml);
 }
 function getTaskHtml(task) {
   return taskTemplate
-    .replace("{{id}}", task.id)
-    .replace("{{value}}", task.value);
+    .replace(`{{id}}`, task.id)
+    .replace(`{{value}}`, task.value);
 }
 
 function getTaskData() {
@@ -88,7 +88,7 @@ function getTaskData() {
   };
 }
 function resetInput() {
-  taskInput.value = "";
+  taskInput.value = ``;
 }
 
 function isInputValid() {
