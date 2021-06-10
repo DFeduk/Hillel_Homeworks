@@ -10,6 +10,7 @@ let tasksList = [];
 
 applyBtn.addEventListener(`click`, onAddTaskBtnClick);
 taskCollection.addEventListener(`click`, removeTask);
+taskCollection.addEventListener(`click`, colorToggle);
 
 init();
 
@@ -48,10 +49,10 @@ function getTaskId(el) {
   return +task.getAttribute(`id`);
 }
 
-function colorToggle() {
-  const insertedElement =
-    taskCollection.children[taskCollection.children.length - 1];
-  insertedElement.addEventListener(`click`, isTaskChecked);
+function colorToggle(e) {
+  if (e.target.classList.contains(TASKS_ELEMENT_CLASS)) {
+    e.target.classList.toggle(`green`);
+  }
 }
 
 function addTask(task) {
@@ -74,7 +75,6 @@ function renderTask(task) {
   link.innerHTML = DELETE_BTN_ICON;
   li.appendChild(link);
   taskCollection.appendChild(li);
-  colorToggle();
 }
 
 function getTaskData() {
@@ -82,10 +82,6 @@ function getTaskData() {
     id: Date.now(),
     value: taskInput.value,
   };
-}
-
-function isTaskChecked(e) {
-  e.target.classList.toggle(`green`);
 }
 
 function resetInput() {
