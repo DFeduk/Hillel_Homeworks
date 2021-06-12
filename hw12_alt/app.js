@@ -12,7 +12,6 @@ let tasksList = [];
 
 applyBtn.addEventListener(`click`, onAddTaskBtnClick);
 taskCollection.addEventListener(`click`, removeTask);
-taskCollection.addEventListener(`click`, colorToggle);
 
 init();
 
@@ -24,13 +23,17 @@ function onAddTaskBtnClick() {
   } else {
     alert(`Write your task!`);
   }
-  resetInput();
 }
 function removeTask(e) {
-  if (e.target.parentElement.classList.contains(DELETE_BTN_CLASS)) {
-    const taskId = getTaskId(e.target);
-    deleteTask(taskId);
-    removeTaskElement(taskId);
+  const taskId = getTaskId(e.target);
+  switch (true) {
+    case e.target.classList.contains(TASKS_ELEMENT_CLASS):
+      toggleTaskState(taskId);
+      break;
+    case e.target.parentElement.classList.contains(DELETE_BTN_CLASS):
+      deleteTask(taskId);
+      removeTaskElement(taskId);
+      break;
   }
 }
 function init() {
@@ -55,12 +58,6 @@ function getTaskId(el) {
   return +task.dataset.taskId;
 }
 
-function colorToggle(e) {
-  if (e.target.classList.contains(TASKS_ELEMENT_CLASS)) {
-    e.target.classList.toggle(`green`);
-  }
-}
-
 function addTask(task) {
   tasksList.push(task);
   saveTaskToLocalStorage();
@@ -77,14 +74,27 @@ function renderTask(task) {
 function getTaskHtml(task) {
   return taskTemplate
     .replace(`{{id}}`, task.id)
-    .replace(`{{value}}`, task.value);
+    .replace(`{{value}}`, task.value)
+    .replace(`{{checkClass}}`, task.isChecked ? `green` : ``);
 }
+function toggleTaskState(id) {
+  tasksList = tasksList.map((item) =>
+    item.id !== id
+      ? item
+      : {
+          ...item,
+          isChecked: !item.isChecked,
+        }
+  );
 
+  renderTasks(tasksList);
+  saveTaskToLocalStorage();
+}
 function getTaskData() {
   return {
     id: Date.now(),
     value: taskInput.value,
-    // isChecked: false,
+    isChecked: false,
   };
 }
 function resetInput() {
