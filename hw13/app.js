@@ -1,5 +1,5 @@
-function Calculator(el) {
-  this.result = el;
+function Calculator(number) {
+  this.result = number;
   this.sum = (value) => (this.result += value);
   this.mult = (value) => (this.result *= value);
   this.sub = (value) => (this.result -= value);
