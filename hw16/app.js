@@ -26,7 +26,7 @@ function renderPhoto(photo) {
   const img = document.createElement(`img`);
   img.id = photo.id;
   img.alt = photo.title;
-  img.src = photo.url;
+  img.src = photo.thumbnailUrl;
   img.setAttribute(`albumid`, photo.albumId);
   li.appendChild(img);
 
