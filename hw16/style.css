@@ -1,0 +1,10 @@
+body {
+  background: aquamarine;
+}
+.photo-collection {
+  list-style-type: none;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
