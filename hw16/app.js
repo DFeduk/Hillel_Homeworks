@@ -27,7 +27,6 @@ function renderPhoto(photo) {
   img.id = photo.id;
   img.alt = photo.title;
   img.src = photo.thumbnailUrl;
-  img.setAttribute(`albumid`, photo.albumId);
   li.appendChild(img);
 
   photoCollection.appendChild(li);
