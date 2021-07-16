@@ -1,36 +1,18 @@
 const photoCollection = document.querySelector(`.photo-collection`);
 const pagination = document.querySelector(`.pagination`);
 const modal = document.querySelector(`.modal-item`);
+const container = document.querySelector(`.container`);
 
 const photoItemTemplate =
   document.querySelector("#modalItemTemplate").innerHTML;
 
-let MAIN_URL = `https://jsonplaceholder.typicode.com/photos`;
+const MAIN_URL = `https://jsonplaceholder.typicode.com/photos`;
 
 let photosList = [];
 
 photoCollection.addEventListener(`click`, onImageClick);
 pagination.addEventListener(`click`, onPaginationClick);
-
-function onImageClick(e) {
-  if (e.target.classList.contains(`photo`)) {
-    getFullPicture(e.target.dataset.src);
-  }
-}
-
-function getFullPicture(url) {
-  modal.innerHTML = generateModal(url);
-}
-function generateModal(url) {
-  return photoItemTemplate.replace("{{url}}", url);
-}
-
-function onPaginationClick(e) {
-  if (e.target.classList.contains(`page`)) {
-    getAlbumPhotos(e.target.id);
-    savePageToLocalStorage(e.target.id);
-  }
-}
+container.addEventListener(`click`, onContainerClick);
 
 init();
 
@@ -98,5 +80,30 @@ function restorePageFromLocalStorage() {
   const data = localStorage.getItem(`pageId`);
   if (data !== null) {
     getAlbumPhotos(JSON.parse(data));
+  }
+}
+
+function openFullPicture(url) {
+  modal.innerHTML = generateModal(url);
+}
+function generateModal(url) {
+  return photoItemTemplate.replace("{{url}}", url);
+}
+
+function onImageClick(e) {
+  if (e.target.classList.contains(`photo`)) {
+    openFullPicture(e.target.dataset.src);
+  }
+}
+
+function onPaginationClick(e) {
+  if (e.target.classList.contains(`page`)) {
+    getAlbumPhotos(e.target.id);
+    savePageToLocalStorage(e.target.id);
+  }
+}
+function onContainerClick(e) {
+  if (e.target.closest(`.close_modal_window`)) {
+    e.target.closest(`.modal`).remove();
   }
 }
