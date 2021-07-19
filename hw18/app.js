@@ -1,3 +1,4 @@
+const idInput = document.querySelector(`#ContactId`);
 const nameInput = document.querySelector(`#name`);
 const phoneInput = document.querySelector(`#phoneNumber`);
 const emailInput = document.querySelector(`#email`);
@@ -19,6 +20,7 @@ tbodyEl.addEventListener(`click`, editTableRow);
 
 function onAddContactFormSubmit(event) {
   event.preventDefault();
+
   sumbitForm();
   resetInputs();
 }
@@ -31,10 +33,17 @@ function sumbitForm() {
     return;
   }
   const contact = getFormData();
-  createContact(contact);
+  if (contact.id) {
+    updateContact(contact);
+  } else {
+    createContact(contact);
+  }
+  //  delete contact.id;
 }
 
 function createContact(contact) {
+  delete contact.id;
+
   fetch(CONTACTS_URL, {
     method: `POST`,
     body: JSON.stringify(contact),
@@ -51,6 +60,7 @@ function addContact(contact) {
 }
 function getFormData() {
   return {
+    id: idInput.value,
     name: nameInput.value,
     phone: phoneInput.value,
     email: emailInput.value,
@@ -97,9 +107,10 @@ function createTableData() {
   return el;
 }
 function resetInputs() {
-  nameInput.value = "";
-  phoneInput.value = "";
-  emailInput.value = "";
+  idInput.value = ``;
+  nameInput.value = ``;
+  phoneInput.value = ``;
+  emailInput.value = ``;
 }
 function editTableRow(e) {
   switch (true) {
@@ -163,19 +174,24 @@ function deleteContact(id) {
 function editContact(id) {
   const contact = contactList.find((item) => item.id === id);
   fillInputs(contact);
-  editUser(contact);
-  // fetch(CONTACTS_URL + id, {
-  //   method: `PUT`,
-  //   body: JSON.stringify(contact),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   }
-  // });
 }
 
 function fillInputs(contact) {
+  idInput.value = contact.id;
   nameInput.value = contact.name;
   phoneInput.value = contact.phone;
   emailInput.value = contact.email;
 }
-function editUser(contact) {}
+function updateContact(contact) {
+  fetch(CONTACTS_URL + contact.id, {
+    method: `PUT`,
+    body: JSON.stringify(contact),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  contactList = contactList.map((el) => (el.id != contact.id ? el : contact));
+  renderContacts(contactList);
+  resetInputs();
+}
