@@ -1,0 +1,27 @@
+.sticker {
+  width: 230px;
+  height: 200px;
+  background: red;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  background: linear-gradient(red, magenta);
+  position: relative;
+}
+.form-control {
+  resize: none;
+  font-size: 20px;
+  overflow: hidden;
+  height: 42%;
+}
+.remove-item {
+  position: absolute;
+  font-size: 40px;
+  right: -13px;
+  z-index: 1;
+  top: -23px;
+}
+.form-control::placeholder {
+  color: grey;
+  opacity: 0.5;
+  font-size: 12px;
+}
