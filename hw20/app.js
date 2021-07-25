@@ -44,6 +44,6 @@ function createLink(photo) {
   let link = $(`<a/>`);
   link.attr(`class`, `fancybox`);
   link.attr(`data-fancybox`, `gallery`);
-  link.attr(`data-src`, photo.url);
+  link.attr(`href`, photo.url);
   return link;
 }
