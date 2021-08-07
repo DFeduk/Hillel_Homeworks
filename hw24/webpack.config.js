@@ -1,0 +1,29 @@
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = [
+  {
+    entry: "./src/js/app.js",
+    mode: "development",
+    output: {
+      filename: "bundle.js",
+      path: path.resolve(__dirname, "dist"),
+    },
+    plugins: [
+      new HtmlWebpackPlugin({ template: "index.html" }),
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+      }),
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"],
+        },
+      ],
+    },
+  },
+];
