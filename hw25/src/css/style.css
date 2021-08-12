@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+}
+.album-item {
+  margin: 7px;
+  cursor: pointer;
+  color: white;
+}
+
+.album-item:hover {
+  border: 2px solid white;
+}

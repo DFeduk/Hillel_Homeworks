@@ -11,8 +11,6 @@ class TodosController {
   initView($el) {
     this.todosView = new TodosView($el, {
       onDelete: this.deleteTodo.bind(this),
-      onToggle: this.toggleTodo.bind(this),
-      onAdd: this.addTodo.bind(this),
     });
   }
   renderList() {
