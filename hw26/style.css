@@ -1,0 +1,113 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  text-align: center;
+  background: repeating-linear-gradient(
+    120deg,
+    rgba(23, 190, 187, 1),
+    rgba(240, 166, 202, 1)
+  );
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+}
+
+form,
+p,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #0000ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#wrapper {
+  margin: 50px auto auto auto;
+  padding-bottom: 25px;
+  max-width: 46%;
+  border: 1px solid #acd8f0;
+}
+
+#usermsg {
+  max-width: 60%;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+#name {
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  max-width: 89%;
+}
+#submitmsg {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  border-radius: 5px;
+  padding: 7px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+#submitmsg:hover {
+  background-color: #555555;
+  color: white;
+}
+.error {
+  color: #ff0000;
+}
+
+#menu {
+  padding: 12.5px 25px 12.5px 25px;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 0.2em;
+  box-shadow: 1px 1px 12px rgb(0 0 0 / 10%);
+  display: flex;
+}
+
+#chatbox {
+  background: rgba(255, 255, 255, 0.05);
+  width: 88%;
+  min-height: 600px;
+  border-radius: 0.2em;
+  position: relative;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 10px;
+
+  overflow: auto;
+}
+#chatbox > .container > p {
+  font-weight: bold;
+  color: black;
+  font-size: 1.05em;
+}
+#chatbox > .container > span {
+  color: black;
+  font-size: 0.95em;
+  text-align: left;
+  font-weight: 300;
+}
