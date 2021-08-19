@@ -1,0 +1,83 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  text-align: center;
+  background: repeating-linear-gradient(
+    120deg,
+    rgba(23, 190, 187, 1),
+    rgba(240, 166, 202, 1)
+  );
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+}
+
+form,
+p,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #0000ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#wrapper {
+  margin: 50px auto auto auto;
+  padding-bottom: 25px;
+  max-width: 46%;
+  border: 1px solid #acd8f0;
+}
+
+#usermsg {
+  max-width: 60%;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+#name {
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  max-width: 89%;
+}
+#submitmsg {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  border-radius: 5px;
+  padding: 7px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+#submitmsg:hover {
+  background-color: #555555;
+  color: white;
+}
+
+#menu {
+  padding: 12.5px 25px 12.5px 25px;
+  user-select: none;
+}
+
+.ball-item {
+  border: 0.1875em solid #0f1c3f;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+}
