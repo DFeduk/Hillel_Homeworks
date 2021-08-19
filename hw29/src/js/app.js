@@ -27,7 +27,6 @@ function init() {
       onLoad(data);
     } else {
       update(data);
-      changeCoords();
     }
   };
 
